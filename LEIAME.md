@@ -1,75 +1,237 @@
-================================================================================
-      SISTEMA DE ATENDIMENTO INTELIGENTE PARA CLINICAS MEDICAS - AVA 2
-================================================================================
+# Sistema de Atendimento Inteligente para Clínicas Médicas
 
-Desenvolvido como Trabalho da Disciplina (TD) de Desenvolvimento Backend I.
-Uma aplicacao web full-stack para agendamento de consultas com integracao de 
-APIs externas e seguranca de dados.
+![Node.js](https://img.shields.io/badge/Node.js-Backend-green)
+![Vue.js](https://img.shields.io/badge/Vue.js-Frontend-brightgreen)
+![MongoDB](https://img.shields.io/badge/MongoDB-Database-darkgreen)
+![JWT](https://img.shields.io/badge/Auth-JWT-blue)
+![Axios](https://img.shields.io/badge/API-Axios-purple)
+![License](https://img.shields.io/badge/License-Academic-lightgrey)
 
-+------------------------------------------------------------------------------+
-| 1. ARQUITETURA E TECNOLOGIAS                                                 |
-+------------------------------------------------------------------------------+
+Este projeto consiste em uma aplicação **Full-Stack** desenvolvida para a **Avaliação 2 (AVA 2)** da disciplina de **Desenvolvimento Backend I**.
 
-O sistema adota a separacao de responsabilidades entre Cliente (Frontend) e 
-Servidor (Backend), comunicando-se via API REST.
+O sistema informatiza o **agendamento de consultas médicas**, integrando autenticação segura, persistência de dados e consumo de APIs externas para otimizar o fluxo de atendimento em clínicas médicas.
 
-[ BACKEND - Motor e Regras de Negocio ]
-> Node.js + Express : Estruturacao do servidor e rotas da API.
-> MongoDB           : Banco de dados NoSQL para salvar usuarios e agendamentos.
-> JWT               : Autenticacao (JSON Web Token) para protecao de rotas.
+---
 
-[ FRONTEND - Interface do Usuario ]
-> Vue.js            : Criacao da interface reativa (Single Page Application).
-> Axios             : Cliente HTTP para consumir o Backend enviando o token.
+# Índice
 
-[ INTEGRACOES - APIs Externas ]
-> ViaCEP            : Busca automatica do endereco baseada no CEP do paciente.
-> OpenWeatherMap    : Previsao do tempo e alertas climaticos para a consulta.
+- [Sobre o Projeto](#-sobre-o-projeto)
+- [Arquitetura](#️-arquitetura)
+- [Tecnologias Utilizadas](#-tecnologias-utilizadas)
+- [Integração com APIs](#-integração-com-apis)
+- [Instalação e Execução](#-instalação-e-execução)
+- [Estrutura do Projeto](#-estrutura-do-projeto)
+- [Funcionalidades](#️-funcionalidades)
+- [Referências Acadêmicas](#-referências-acadêmicas)
 
-+------------------------------------------------------------------------------+
-| 2. INSTRUCOES PARA EXECUCAO LOCAL                                            |
-+------------------------------------------------------------------------------+
-Requisitos: Node.js e MongoDB (rodando localmente na porta 27017) instalados.
+---
 
----> PASSO A: INICIANDO O BACKEND (PORTA 3000)
-  1. Abra o terminal e acesse a pasta do servidor:
-     $ cd clinica-backend
+# 📖 Sobre o Projeto
 
-  2. Instale as dependencias:
-     $ npm install
+O sistema foi desenvolvido para **digitalizar o processo de agendamento médico**, permitindo:
 
-  3. Crie um arquivo chamado ".env" e configure as variaveis:
-     PORT=3000
-     MONGO_URI=mongodb://localhost:27017/clinica
-     JWT_SECRET=suachavesecreta
+- Cadastro e autenticação de usuários
+- Agendamento de consultas
+- Consulta automática de endereço via CEP
+- Verificação de previsão climática no dia da consulta
+- Painel administrativo para gerenciamento dos atendimentos
 
-  4. Inicie o servidor:
-     $ npm run dev
+A aplicação segue o modelo **Full-Stack**, separando claramente **Frontend** e **Backend**.
 
----> PASSO B: INICIANDO O FRONTEND (PORTA 5173)
-  1. Abra um NOVO terminal e acesse a pasta da interface:
-     $ cd clinica-frontend
+---
 
-  2. Instale as dependencias:
-     $ npm install
+# Arquitetura
 
-  3. Inicie a aplicacao web:
-     $ npm run dev
+A arquitetura do sistema foi planejada para garantir **modularidade, segurança e escalabilidade**.
 
-+------------------------------------------------------------------------------+
-| 3. FLUXO DE USO DO SISTEMA                                                   |
-+------------------------------------------------------------------------------+
+## Backend
 
-[1] LOGIN:
-    Acesse localhost:5173 no navegador e realize o login com e-mail e senha.
-    O sistema validara os dados no Backend e guardara o Token JWT.
+Implementado com **Node.js** e **Express**, seguindo o padrão **MVC**.
 
-[2] REDIRECIONAMENTO:
-    Apos o login bem-sucedido, o Vue Router levara voce ao Painel principal.
+Responsabilidades principais:
 
-[3] AGENDAMENTO INTELIGENTE:
-    Preencha a Data, o Horario e o CEP. Ao submeter, o sistema consultara as 
-    APIs ViaCEP e OpenWeatherMap automaticamente, salvando a consulta no banco 
-    e retornando o endereco completo e a previsao do tempo na tela.
+- Gerenciamento de usuários
+- Autenticação via JWT
+- Controle de agendamentos
+- Integração com APIs externas
+- Comunicação com o banco de dados
 
-================================================================================
+## Frontend
+
+Desenvolvido em **Vue.js**, responsável pela interface do usuário e consumo da API.
+
+Principais características:
+
+- Interface reativa
+- Formulários de login e cadastro
+- Tela de agendamento
+- Painel administrativo de consultas
+
+---
+
+# Tecnologias Utilizadas
+
+## Backend
+
+- Node.js
+- Express.js
+- MongoDB
+- Mongoose
+- JSON Web Token (JWT)
+- dotenv
+
+## Frontend
+
+- Vue.js
+- Axios
+- Vite
+
+## APIs externas
+
+- ViaCEP
+- OpenWeatherMap
+
+---
+
+# Integração com APIs
+
+O sistema utiliza APIs externas para enriquecer a experiência do usuário.
+
+### ViaCEP
+
+Permite consultar automaticamente o endereço a partir do CEP informado pelo paciente.
+
+Documentação:
+https://viacep.com.br/
+
+### OpenWeatherMap
+
+Utilizado para verificar a **previsão do tempo** no dia da consulta, alertando o paciente sobre possibilidade de chuva.
+
+Documentação:
+https://openweathermap.org/api
+
+---
+
+# Instalação e Execução
+
+## Pré-requisitos
+
+Antes de iniciar, é necessário possuir instalado:
+
+- Node.js
+- npm
+- MongoDB
+
+---
+
+# Configuração do Backend
+
+Entre na pasta do backend:
+
+```bash
+cd clinica-backend
+```
+
+Instale as dependências:
+
+```bash
+npm install
+```
+
+Crie o arquivo `.env` na raiz do projeto:
+
+```env
+PORT=3000
+MONGO_URI=mongodb://localhost:27017/clinica
+JWT_SECRET=sua_chave_secreta
+```
+
+Inicie o servidor:
+
+```bash
+npm run dev
+```
+
+---
+
+# Configuração do Frontend
+
+Entre na pasta do frontend:
+
+```bash
+cd clinica-frontend
+```
+
+Instale as dependências:
+
+```bash
+npm install
+```
+
+Inicie a aplicação:
+
+```bash
+npm run dev
+```
+
+A aplicação estará disponível em:
+
+```
+http://localhost:5173
+```
+
+---
+
+# Estrutura do Projeto
+
+```
+clinica-agendamento/
+│
+├── clinica-backend/
+│   ├── controllers
+│   ├── models
+│   ├── routes
+│   ├── middleware
+│   ├── config
+│   └── server.js
+│
+├── clinica-frontend/
+│   ├── src
+│   │   ├── components
+│   │   ├── views
+│   │   ├── services
+│   │   └── App.vue
+│   └── index.html
+│
+└── LEIAME.md
+```
+
+---
+
+# Funcionalidades
+
+✔ Cadastro de usuários  
+✔ Login com autenticação JWT  
+✔ Agendamento de consultas  
+✔ Consulta automática de endereço via CEP  
+✔ Verificação de previsão climática  
+✔ Painel administrativo de agendamentos  
+✔ Interface responsiva
+
+---
+
+# Referências Acadêmicas
+
+ALVES, W. P. **Projetos de sistemas web: conceitos, estruturas, criação de banco de dados e ferramentas de desenvolvimento.** São Paulo: Saraiva, 2015.
+
+FREITAS, P. H. C.; BIRNFELD, K.; SARAIVA, M. O. et al. **Programação back end III.** Porto Alegre: Grupo A, 2021.
+
+OLIVEIRA, C. L. V.; ZANETTI, H. A. P. **Javascript descomplicado: programação para web, IoT e dispositivos móveis.** São Paulo: Saraiva, 2020.
+
+---
+
+# Autor
+
+Raphael Florenço dos Santos  
+Projeto desenvolvido para fins acadêmicos.

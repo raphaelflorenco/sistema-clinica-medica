@@ -12,7 +12,7 @@ body {
   margin: 0;
   padding: 0;
   background-color: #f4f7f6;
-  /* Escolhendo fontes mais legíveis e modernas */
+  /* Escolhendo fontes mais legiveis e modernas */
   font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   
   /* AUMENTANDO O TAMANHO E O CONTRASTE */

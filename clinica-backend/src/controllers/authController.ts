@@ -49,7 +49,7 @@ export const loginUsuario = async (req: Request, res: Response): Promise<any> =>
       return res.status(400).json({ erro: 'E-mail ou senha incorretos.' });
     }
 
-    // 3. Gera o Token JWT (O nosso "cracha" digital)
+    // 3. Gera o Token JWT ("cracha" digital)
     const token = jwt.sign(
       { id: usuario._id, cargo: usuario.cargo }, // Payload
       process.env.JWT_SECRET as string,          // Assinatura secreta

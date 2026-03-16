@@ -8,13 +8,13 @@ export const criarAgendamento = async (req: CustomRequest, res: Response): Promi
     const { dataConsulta, horario, cep } = req.body;
     const pacienteId = req.usuario.id;
 
-    // 1. Verificação de Horário Disponível (Regra de Negócio)
+    // 1. Verificacao de Horario Disponivel (Regra de Negocio)
     const conflito = await Appointment.findOne({ dataConsulta, horario, status: 'agendado' });
     if (conflito) {
       return res.status(400).json({ erro: 'Este horario ja esta ocupado por outro paciente.' });
     }
 
-    // 2. Integração com API de CEP (ViaCEP)
+    // 2. Integracao com API de CEP (ViaCEP)
     let endereco = '';
     let cidade = '';
     try {
@@ -36,7 +36,7 @@ export const criarAgendamento = async (req: CustomRequest, res: Response): Promi
         );
         const condicao = weatherRes.data.weather[0].main.toLowerCase();
         if (condicao.includes('rain') || condicao.includes('storm') || condicao.includes('drizzle')) {
-          alerta = 'Atenção: Previsao de chuva. Nao esqueca o guarda-chuva!';
+          alerta = 'Atencao: Previsao de chuva. Nao esqueca o guarda-chuva!';
         }
       } catch (e) {
         console.error("Erro ao buscar clima");

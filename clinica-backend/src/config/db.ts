@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 const connectDB = async () => {
   try {
-    // Tenta conectar ao MongoDB usando o endereço que colocamos no .env
+    // Tenta conectar ao MongoDB usando o endereço colocado no .env
     const conn = await mongoose.connect(process.env.MONGO_URI as string);
     console.log(`MongoDB Conectado: ${conn.connection.host}`);
   } catch (error) {
